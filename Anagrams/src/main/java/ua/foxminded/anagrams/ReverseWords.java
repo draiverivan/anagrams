@@ -5,62 +5,55 @@ package ua.foxminded.anagrams;
 /*Simple Solution: 
 
 Split String in separate words if there are more than one word.
-Create a temporary character array say temp[]. 
-Copy alphabetic characters from the given array to temp[]. 
-Reverse temp[] using standard string reversal algorithm. 
+Create a temporary character array say temporaryCharacter[]. 
+Copy alphabetic characters from the given array to temporaryCharacter[]. 
+Reverse temporaryCharacter[] using standard string reversal algorithm. 
 Now traverse input string and temp in a single loop. Wherever there is an alphabetic character 
-is input string, replace it with the current character of temp[].*/
-
-import java.util.*;
+is input string, replace it with the current character of temporaryCharacter[].*/
 
 public class ReverseWords {
 
-	static String SrevStrTemporary;
-
-	public static void rev(char s[], int l, int r) {
-		for (int i = l; i < r / 2; i++) {
-			char temp = s[i];
-			s[i] = s[r - 1 - i];
-			s[r - 1 - i] = temp;
+	public void reverseAlphabeticCharArray(char inputWordAlphabeticCharArray[], int index, int indexLast) {
+		for (int i = index; i < indexLast / 2; i++) {
+			char temporaryCharacter = inputWordAlphabeticCharArray[i];
+			inputWordAlphabeticCharArray[i] = inputWordAlphabeticCharArray[indexLast - 1 - i];
+			inputWordAlphabeticCharArray[indexLast - 1 - i] = temporaryCharacter;
 		}
 	}
 
-	public static void reverse(char s[]) {
+	public String reverse(char inputWordCharArray[]) {
 
 		// creating character array of size equal to length of word
 
-		char[] temp = new char[s.length];
+		char[] temporaryCharacter = new char[inputWordCharArray.length];
 		int x = 0;
-		for (int i = 0; i < s.length; i++) {
-			if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z') {
+		for (int i = 0; i < inputWordCharArray.length; i++) {
+			if (inputWordCharArray[i] >= 'a' && inputWordCharArray[i] <= 'z'
+					|| inputWordCharArray[i] >= 'A' && inputWordCharArray[i] <= 'Z') {
 				// storing elements in array
-				temp[x] = s[i];
+				temporaryCharacter[x] = inputWordCharArray[i];
 				x++;
 			}
 		}
 
 		// reversing the character array
-		rev(temp, 0, x);
+		reverseAlphabeticCharArray(temporaryCharacter, 0, x);
 
 		x = 0;
-		for (int i = 0; i < s.length; i++) {
-			if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z') {
+		for (int i = 0; i < inputWordCharArray.length; i++) {
+			if (inputWordCharArray[i] >= 'a' && inputWordCharArray[i] <= 'z'
+					|| inputWordCharArray[i] >= 'A' && inputWordCharArray[i] <= 'Z') {
 				// updating the origional word
-				s[i] = temp[x];
+				inputWordCharArray[i] = temporaryCharacter[x];
 				x++;
 			}
 		}
 
-		String revStr = new String(s);
-		SrevStrTemporary = revStr;
-
+		String reversedWord = new String(inputWordCharArray);
+		return reversedWord;
 	}
 
-	public static void main(String[] args) {
-
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter a string: ");
-		String userInput = scanner.nextLine();
+	public void splitAndMakeReadyString(String userInput) {
 
 		String inputWords[] = userInput.split(" ");
 		String outputWords[] = new String[inputWords.length];
@@ -68,8 +61,8 @@ public class ReverseWords {
 		int i = 0;
 		for (String inputWord : inputWords) {
 			char[] charArray = inputWord.toCharArray();
-			reverse(charArray);
-			String reverse = new StringBuilder(SrevStrTemporary).toString();
+			// reverse(charArray);
+			String reverse = new StringBuilder(reverse(charArray)).toString();
 			outputWords[i] = reverse;
 			i++;
 
@@ -77,4 +70,5 @@ public class ReverseWords {
 		System.out.println("Reversed string is: " + String.join(" ", outputWords));
 
 	}
+
 }
