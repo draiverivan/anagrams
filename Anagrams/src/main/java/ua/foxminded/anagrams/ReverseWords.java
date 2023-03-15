@@ -61,7 +61,6 @@ public class ReverseWords {
 		int i = 0;
 		for (String inputWord : inputWords) {
 			char[] charArray = inputWord.toCharArray();
-			// reverse(charArray);
 			String reverse = new StringBuilder(reverse(charArray)).toString();
 			outputWords[i] = reverse;
 			i++;
