@@ -1,12 +1,12 @@
 # Anagrams
 
-##Description
+## Description
 
 Here's a Maven project that reverses each word in Latin alphabet of input String, while leaving all non-letter symbols in their original position.
 
 _Use only the Latin alphabet to test._
 
-##Examples:
+## Examples:
 
 - Each word in the text should be reversed:
 
@@ -16,7 +16,7 @@ _Use only the Latin alphabet to test._
 
 > "a1bcd efg!h" => "d1cba hgf!e"
 
-##Usage
+## Usage
 
 - In the root folder of this project enter command to build project:
 
