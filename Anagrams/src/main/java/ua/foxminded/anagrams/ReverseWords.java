@@ -1,5 +1,7 @@
 package ua.foxminded.anagrams;
 
+import java.util.Scanner;
+
 /*Java code to illustrate how to reverse a string without affecting special characters.*/
 
 /*Simple Solution: 
@@ -12,6 +14,24 @@ Now traverse input string and temp in a single loop. Wherever there is an alphab
 is input string, replace it with the current character of temporaryCharacter[].*/
 
 public class ReverseWords {
+
+	public void validationInput() {
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Hi I can reverse each word in Latin alphabet of input String,\n"
+				+ "while leaving all non-letter symbols in their original position. \nEnter a string: ");
+		String userInput = scanner.nextLine();
+
+		while (!userInput.matches(".*[a-zA-Z].*")) {
+			System.out.println(
+					"String must have at least 1 Latin alphabetic character. Please try again." + "\nEnter a string: ");
+			userInput = scanner.nextLine();
+
+		}
+
+		splitAndMakeReadyString(userInput);
+
+	}
 
 	public void reverseAlphabeticCharArray(char inputWordAlphabeticCharArray[], int index, int indexLast) {
 		for (int i = index; i < indexLast / 2; i++) {
@@ -26,26 +46,26 @@ public class ReverseWords {
 		// creating character array of size equal to length of word
 
 		char[] temporaryCharacter = new char[inputWordCharArray.length];
-		int x = 0;
+		int indexOfTemporaryCharacter = 0;
 		for (int i = 0; i < inputWordCharArray.length; i++) {
 			if (inputWordCharArray[i] >= 'a' && inputWordCharArray[i] <= 'z'
 					|| inputWordCharArray[i] >= 'A' && inputWordCharArray[i] <= 'Z') {
 				// storing elements in array
-				temporaryCharacter[x] = inputWordCharArray[i];
-				x++;
+				temporaryCharacter[indexOfTemporaryCharacter] = inputWordCharArray[i];
+				indexOfTemporaryCharacter++;
 			}
 		}
 
 		// reversing the character array
-		reverseAlphabeticCharArray(temporaryCharacter, 0, x);
+		reverseAlphabeticCharArray(temporaryCharacter, 0, indexOfTemporaryCharacter);
 
-		x = 0;
+		indexOfTemporaryCharacter = 0;
 		for (int i = 0; i < inputWordCharArray.length; i++) {
 			if (inputWordCharArray[i] >= 'a' && inputWordCharArray[i] <= 'z'
 					|| inputWordCharArray[i] >= 'A' && inputWordCharArray[i] <= 'Z') {
 				// updating the origional word
-				inputWordCharArray[i] = temporaryCharacter[x];
-				x++;
+				inputWordCharArray[i] = temporaryCharacter[indexOfTemporaryCharacter];
+				indexOfTemporaryCharacter++;
 			}
 		}
 
