@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ua.foxminded.javaspring</groupId>
@@ -21,11 +22,18 @@
 			<version>5.9.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.9.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>Anagrams</finalName>
 		<pluginManagement>
-			<!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+			<!-- lock down plugins versions to avoid using Maven defaults 
+																(may be moved to parent pom) -->
 			<plugins>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
@@ -65,10 +73,21 @@
 								<addClasspath>true</addClasspath>
 								<classpathPrefix>libs/</classpathPrefix>
 								<mainClass>
-                   ua.foxminded.anagrams.TestReverseWords
-                </mainClass>
+									ua.foxminded.anagrams.StartReverseWords
+								</mainClass>
 							</manifest>
 						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>net.revelc.code.formatter</groupId>
+					<artifactId>formatter-maven-plugin</artifactId>
+					<version>2.22.0</version>
+					<configuration>
+						<directories>
+							<directory>${project.build.sourceDirectory}</directory>
+							<directory>${project.build.directory}/generated-sources</directory>
+						</directories>
 					</configuration>
 				</plugin>
 			</plugins>

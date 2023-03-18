@@ -1,7 +1,5 @@
 package ua.foxminded.anagrams;
 
-import java.util.Scanner;
-
 /*Java code to illustrate how to reverse a string without affecting special characters.*/
 
 /*Simple Solution: 
@@ -15,25 +13,7 @@ is input string, replace it with the current character of temporaryCharacter[].*
 
 public class ReverseWords {
 
-	public void validationInput() {
-
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Hi I can reverse each word in Latin alphabet of input String,\n"
-				+ "while leaving all non-letter symbols in their original position. \nEnter a string: ");
-		String userInput = scanner.nextLine();
-
-		while (!userInput.matches(".*[a-zA-Z].*")) {
-			System.out.println(
-					"String must have at least 1 Latin alphabetic character. Please try again." + "\nEnter a string: ");
-			userInput = scanner.nextLine();
-
-		}
-
-		splitAndMakeReadyString(userInput);
-
-	}
-
-	public void reverseAlphabeticCharArray(char inputWordAlphabeticCharArray[], int index, int indexLast) {
+	public void reverseAlphabeticCharArray(char[] inputWordAlphabeticCharArray, int index, int indexLast) {
 		for (int i = index; i < indexLast / 2; i++) {
 			char temporaryCharacter = inputWordAlphabeticCharArray[i];
 			inputWordAlphabeticCharArray[i] = inputWordAlphabeticCharArray[indexLast - 1 - i];
@@ -41,7 +21,7 @@ public class ReverseWords {
 		}
 	}
 
-	public String reverse(char inputWordCharArray[]) {
+	public String reverse(char[] inputWordCharArray) {
 
 		// creating character array of size equal to length of word
 
@@ -69,14 +49,13 @@ public class ReverseWords {
 			}
 		}
 
-		String reversedWord = new String(inputWordCharArray);
-		return reversedWord;
+		return new String(inputWordCharArray);
 	}
 
-	public void splitAndMakeReadyString(String userInput) {
+	public String splitAndMakeReadyString(String userInput) {
 
-		String inputWords[] = userInput.split(" ");
-		String outputWords[] = new String[inputWords.length];
+		String[] inputWords = userInput.split(" ");
+		String[] outputWords = new String[inputWords.length];
 
 		int i = 0;
 		for (String inputWord : inputWords) {
@@ -86,8 +65,8 @@ public class ReverseWords {
 			i++;
 
 		}
-		System.out.println("Reversed string is: " + String.join(" ", outputWords));
 
+		return String.join(" ", outputWords);
 	}
 
 }
