@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputValidatorTest {
@@ -57,6 +58,13 @@ class InputValidatorTest {
 	@ParameterizedTest
 	@ValueSource(strings = { "1312", "131 455", "!", "№₴ ?:1", "356!", "!345 %456", "ф23", "цк23 фй!", "мя23 фф фв" })
 	void isInputValid_ShouldReturnFalseForOnlyNonLatinLetterSymbolsInput(String userInput) {
+		InputValidator inputValidator = new InputValidator();
+		assertFalse(inputValidator.isInputValid(userInput));
+	}
+
+	@ParameterizedTest
+	@NullSource
+	void isInputValid_ShouldReturnNullPointerForNull(String userInput) {
 		InputValidator inputValidator = new InputValidator();
 		assertFalse(inputValidator.isInputValid(userInput));
 	}
