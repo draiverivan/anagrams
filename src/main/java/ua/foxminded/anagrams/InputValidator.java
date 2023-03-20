@@ -7,6 +7,9 @@ public class InputValidator {
 
 	public boolean isInputValid(String userInput) {
 
+		if (userInput == null) {
+			return false;
+		}
 		return userInput.matches(".*[a-zA-Z].*");
 
 	}
