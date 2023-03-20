@@ -13,6 +13,8 @@ is input string, replace it with the current character of temporaryCharacter[].*
 
 public class ReverseWords {
 
+	public static final String SPACE = " ";
+
 	public void reverseAlphabeticCharArray(char[] inputWordAlphabeticCharArray, int index, int indexLast) {
 		for (int i = index; i < indexLast / 2; i++) {
 			char temporaryCharacter = inputWordAlphabeticCharArray[i];
@@ -54,7 +56,7 @@ public class ReverseWords {
 
 	public String splitAndMakeReadyString(String userInput) {
 
-		String[] inputWords = userInput.split(" ");
+		String[] inputWords = userInput.split(SPACE);
 		String[] outputWords = new String[inputWords.length];
 
 		int i = 0;
@@ -66,7 +68,7 @@ public class ReverseWords {
 
 		}
 
-		return String.join(" ", outputWords);
+		return String.join(SPACE, outputWords);
 	}
 
 }
