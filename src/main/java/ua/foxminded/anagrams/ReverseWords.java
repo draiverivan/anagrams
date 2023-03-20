@@ -13,7 +13,7 @@ is input string, replace it with the current character of temporaryCharacter[].*
 
 public class ReverseWords {
 
-	public static final String SPACE = " ";
+	private static final String SPACE = " ";
 
 	public void reverseAlphabeticCharArray(char[] inputWordAlphabeticCharArray, int index, int indexLast) {
 		for (int i = index; i < indexLast / 2; i++) {
